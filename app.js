@@ -35,7 +35,7 @@ async function showNewAddress() {
 }
 
 async function getAddress(ip) {
-	let res = await fetch(`http://ip-api.com/json/${ip}?fields=9208`);
+	let res = await fetch(`https://ip-api.com/json/${ip}?fields=9208`);
 	let data = await res.json();
 	changeAddress(data);
 };
