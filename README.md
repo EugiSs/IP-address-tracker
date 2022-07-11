@@ -33,6 +33,7 @@ Also used:
 - [Leafletjs](https://leafletjs.com/)
 - [ip-api](https://ip-api.com/)
 - [Moment Timezone](https://momentjs.com/timezone/)
+- [cors-anywhere](https://cors-anywhere.herokuapp.com/) - as a wrapper for an http request for correct display on the site
 
 ## Author
 
