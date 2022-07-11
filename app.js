@@ -1,5 +1,7 @@
-window.onload = function () {
-	getAddress('');
+window.onload = async function () {
+	let res = await fetch("https://ipapi.co/json");
+	let data = await res.json();
+	getAddress(data.ip);
 }
 
 // Map
@@ -53,7 +55,7 @@ function changeAddress(data) {
 	L.marker([data.lat, data.lon]).addTo(map);
 };
 
-
+// function sh
 
 
 

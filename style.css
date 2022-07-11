@@ -75,11 +75,17 @@ img {
   color: hsl(0, 0%, 59%);
   font-size: 1.4rem;
 }
+.input:hover {
+	cursor: pointer;
+}
 .btn {
   color: #fff;
   background-color: hsl(0, 0%, 17%);
   border-radius: 0 1.3rem 1.3rem 0;
   padding: 2rem 2.2rem;
+}
+.btn:hover {
+	background-color: hsl(0, 0%, 25%);
 }
 .address {
   position: absolute;
