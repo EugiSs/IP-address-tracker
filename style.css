@@ -1,0 +1,170 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+:root {
+  font-size: 62.5%;
+}
+html,
+body {
+  min-height: 100vh;
+  font-family: "Rubik", sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+button:hover {
+  cursor: pointer;
+}
+input,
+button {
+  font-family: "Rubik", sans-serif;
+}
+h1 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+img {
+  vertical-align: top;
+}
+
+.main {
+  flex: 1 1 auto;
+  overflow-x: hidden;
+}
+
+.tracker {
+  position: relative;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(./images/pattern-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 2rem 1.5rem 15rem;
+}
+.tracker__title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+.tracker__form {
+  width: 100%;
+  display: flex;
+}
+.input {
+  flex: 1 1 auto;
+  font-size: 1.6rem;
+  outline: none;
+  color: hsl(0, 0%, 17%);
+  background-color: #fff;
+  border-radius: 1.3rem 0 0 1.3rem;
+  padding: 1.5rem 2rem;
+}
+.input::placeholder {
+  color: hsl(0, 0%, 59%);
+  font-size: 1.4rem;
+}
+.btn {
+  color: #fff;
+  background-color: hsl(0, 0%, 17%);
+  border-radius: 0 1.3rem 1.3rem 0;
+  padding: 2rem 2.2rem;
+}
+.address {
+  position: absolute;
+  top: 14.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3rem);
+  max-width: 41rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.3rem;
+  background-color: #fff;
+  padding: 2.3rem;
+}
+.address__block {
+  text-align: center;
+}
+.address__block:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.address__title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: hsl(0, 0%, 59%);
+  margin-bottom: 1rem;
+}
+.address__info {
+  font-weight: 700;
+  color: hsl(0, 0%, 17%);
+}
+
+.tracker-map {
+  height: calc(100vh - 27rem - 1.3rem);
+}
+#map {
+  z-index: 1;
+  height: inherit;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 670px) {
+  .tracker {
+    padding-bottom: 8.5rem;
+  }
+  .tracker__title {
+    font-size: 2.6rem;
+  }
+  .tracker__form {
+    max-width: 50rem;
+  }
+  .input {
+    font-size: 1.8rem;
+  }
+  .input::placeholder {
+    font-size: 1.8rem;
+  }
+  .address {
+    flex-direction: row;
+		justify-content: space-between;
+    max-width: 100rem;
+    top: 15.5rem;
+  }
+	.address__block {
+		text-align: left;
+		flex: 0 1 25%;
+		position: relative;
+	}
+  .address__block:not(:last-child) {
+    margin-bottom: 0;
+		margin-right: 2rem;
+		border-right: 1px solid hsl(0, 0%, 85%);
+  }
+	.address__info {
+		margin-right: 1rem;
+	}
+	.tracker-map {
+		height: calc(100vh - 21.1rem - 1.3rem);
+	}
+}
