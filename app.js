@@ -1,61 +1,64 @@
-window.onload = async function () {
-	let res = await fetch("https://ipapi.co/json");
-	let data = await res.json();
-	getAddress(data.ip);
-}
+let ip = "8.8.8.8"
+let access_key = "at_LuVp7vwSvdUqgohY5oVOo9cBAje8T"
+window.addEventListener("load", async function () {
+	let res = await fetch(
+		`https://geo.ipify.org/api/v2/country,city?ipAddress=${ip}&apiKey=${access_key}`
+	)
+	let data = await res.json()
+  changeAddress(data);
+})
 
 // Map
-let map = L.map('map', {
+let map = L.map("map", {
 	center: [0, 0],
 	zoom: 13,
-	zoomControl: false,
-});
+	zoomControl: false
+})
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 	maxZoom: 19,
-	attribution: '© OpenStreetMap'
-}).addTo(map);
-
+	attribution: "© OpenStreetMap"
+}).addTo(map)
 
 // IP
-document.querySelector('#submit-btn').addEventListener('click', showNewAddress);
-document.querySelector('[name="input-ip"]').addEventListener('keydown', (e) => {
-	if (e.keyCode === 13) return showNewAddress();
-});
+document.querySelector("#submit-btn").addEventListener("click", showNewAddress)
+document.querySelector('[name="input-ip"]').addEventListener("keydown", (e) => {
+	if (e.keyCode === 13) return showNewAddress()
+})
 
 async function showNewAddress() {
-	let input = document.querySelector('[name="input-ip"]');
-	let ip = input.value.replace(/https?:\/\//, "").replace(/\/.*/, "");
-
+	let input = document.querySelector('[name="input-ip"]')
+	let ip = input.value.replace(/https?:\/\//, "").replace(/\/.*/, "")
 	if (!validator.isIP(ip) && !validator.isFQDN(ip)) {
-		input.style.border = '1.5px solid red';
-		return false;
+		input.style.border = "1.5px solid red"
+		return false
 	}
-	input.style.border = 'none';
+	input.style.border = "none"
 
-	await getAddress(ip);
+	await getAddress(ip)
 }
 
 async function getAddress(ip) {
-	let res = await fetch(`https://cors-anywhere.herokuapp.com/http://ip-api.com/json/${ip}?fields=9208`);
-	let data = await res.json();
-	changeAddress(data);
-};
+  let url =`https://geo.ipify.org/api/v2/country,city?ipAddress=${ip}&apiKey=${access_key}`;
+  if (!validator.isIP(ip)){
+     url = `https://geo.ipify.org/api/v2/country,city?domain=${ip}&apiKey=${access_key}`
+  }
+	let res = await fetch(url)
+	let data = await res.json()
+	changeAddress(data)
+}
 
 function changeAddress(data) {
-	document.querySelector('#ip-address').textContent = data.query;
-	document.querySelector('#location').textContent = `${data.regionName}, ${data.city}, ${data.zip}`;
-	document.querySelector('#timezone').textContent = `UTC ${moment.tz(data.timezone).format('Z')}`;
-	document.querySelector('#isp').textContent = data.isp;
-
+	document.querySelector("#ip-address").textContent = data.ip
+	document.querySelector(
+		"#location"
+	).textContent = `${data.location.city}, ${data.location.country}, ${data.location.postalCode}`
+	document.querySelector("#timezone").textContent = `UTC ${data.location.timezone}`
+	document.querySelector("#isp").textContent = data.isp
+  console.log(data);
 	map.panTo({
-		lat: data.lat,
-		lon: data.lon
-	});
-	L.marker([data.lat, data.lon]).addTo(map);
-};
-
-// function sh
-
-
-
+		lat: data.location.lat,
+		lon: data.location.lng,
+	})
+	L.marker([data.location.lat, data.location.lng]).addTo(map)
+}
