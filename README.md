@@ -16,7 +16,7 @@ Users should be able to:
 
 ### Links
 
-- [Live Site URL](https://evgiss.github.io/IP-address-tracker/)
+- [Live Site URL](https://eugiss.github.io/IP-address-tracker/)
 
 ## My process
 
@@ -37,5 +37,5 @@ Also used:
 
 ## Author
 
-- Github - [EvgiSs](https://github.com/EvgiSs)
-- Frontend Mentor - [@Evgi](https://www.frontendmentor.io/profile/EvgiSs)
+- Github - [EugiSs](https://github.com/EugiSs)
+- Frontend Mentor - [@Eugi](https://www.frontendmentor.io/profile/EugiSs)
